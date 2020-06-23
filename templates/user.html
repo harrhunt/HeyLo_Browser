@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ user }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Models</h1>
+    <div class="grid-algs">
+        {% for alg in algs %}
+            <a class="alg" href="/users/{{ user }}/{{ alg }}">{{ alg }}</a>
+        {% endfor %}
+    </div>
+    <h1>Tweets</h1>
+    <p class="tweets">{{ tweets.tweets }}</p>
+{% endblock %}

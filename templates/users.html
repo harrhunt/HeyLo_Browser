@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Users{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Users</h1>
+    {% set rows = (users|length/4)|round(0, 'ceil')|int %}
+    <div class="grid-users" style="grid-template-rows: repeat({{ rows }}, 1fr)">
+        {% for user in users %}
+            <a class="user" href="/users/{{ user }}">{{ user }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
