@@ -32,13 +32,21 @@ def this_user(user):
 def this_alg(user, alg):
     data = None
     maximum = 0
+    interests = None
     if user in os.listdir("data/people"):
         algs = [x.split('.')[1] for x in os.listdir(f"data/people/{user}") if "User" in x]
         if alg in algs:
             with open(f"data/people/{user}/{user}.{alg}.json") as file:
                 data = json.load(file)
             maximum = data["interests"][max(data["interests"].items(), key=operator.itemgetter(1))[0]]
-    return render_template("data.html", user=user, alg=alg, data=data, maximum=maximum)
+            interests = {}
+            for i in range(50):
+                if len(data["interests"]) <= 0:
+                    break
+                max_key = max(data["interests"].items(), key=operator.itemgetter(1))[0]
+                interests[max_key] = data["interests"][max_key]
+                del data["interests"][max_key]
+    return render_template("data.html", user=user, alg=alg, data=data, maximum=maximum, interests=interests)
 
 
 if __name__ == '__main__':
