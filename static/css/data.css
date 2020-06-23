@@ -23,6 +23,9 @@
 .gridItem {
     display: block;
     /*margin: 2px 5%;*/
+    border: 2px solid #ccc;
+    padding: 5px;
+    margin: 5px;
 }
 
 .key {
@@ -40,6 +43,19 @@
     display: block;
     width: 100px;
     margin: 2px auto;
+}
+
+.emoji-thumb {
+    display: block;
+    width: 50px;
+    margin: 30px auto;
+    clear: both;
+}
+
+.emoji-label {
+    display: block;
+    margin: 2px auto;
+    font-weight: bold;
 }
 
 .emojis {
