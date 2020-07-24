@@ -63,6 +63,12 @@ a:visited {
 
 }
 
+.alphabetic-label {
+    display: block;
+    margin: 2px auto;
+    width: 250px;
+}
+
 .grid-algs {
     display: -webkit-box;
     display: -webkit-flex;

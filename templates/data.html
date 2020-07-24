@@ -11,12 +11,10 @@
     {% if data is not none %}
         <h1><a href="https://twitter.com/{{ user }}" target="_blank">{{ user }}</a></h1>
         <h2>Interests</h2>
-        {% set rows = (interests|length/4)|round(0, 'ceil')|int %}
         <div class="grid-interests" style="grid-template-rows: repeat({{ rows }}, 1fr)">
             {% for interest in interests %}
                 <div class="gridItem">
-                    <span class="key">{{ loop.index }}. <a class="interest"
-                                                           href="#{{ interest }}">{{ interest }}</a>:</span>
+                    <span class="key">{{ loop.index }}. {{ interest }}:</span>
                     <div class="progress-container">
                         <div class="progress-bar" style="width: {{ (interests[interest]/maximum)*100 }}%">
                     <span class="value">
@@ -28,23 +26,8 @@
                         <img class="emoji-thumb"
                              src="{{ url_for('static', filename='images/emojis/' + data.emojis[interest]["emoji"] + '.svg') }}"
                              alt="{{ interest }}">
-                        <p class="emoji-label">{{ data.emojis[interest]["emoji"] }}</p>
+                        <p >Emoji: <span class="emoji-label">{{ data.emojis[interest]["emoji"] }}</span></p>
                     {% endif %}
-                </div>
-            {% endfor %}
-        </div>
-        <h2>Emojis</h2>
-        <h3 style="text-align: center">Interest → Emoji</h3>
-        <div class="grid-emojis">
-            {% for interest in data.emojis %}
-                <div class="gridItem emojis" id="{{ interest }}">
-                    <p class="emoji-line"><span class="key">{{ interest }}</span> &nbsp; → &nbsp; <span
-                            class="value">{{ data.emojis[interest]["emoji"] }}</span></p>
-                    <img class="emoji"
-                         src="{{ url_for('static', filename='images/emojis/' + data.emojis[interest]["emoji"] + '.svg') }}"
-                         alt="{{ interest }}">
-                    <p class="emoji-line"><span class="key">Score</span>: &nbsp; <span
-                            class="value">{{ data.emojis[interest]["score"] }}</span></p>
                 </div>
             {% endfor %}
         </div>
